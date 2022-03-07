@@ -101,9 +101,9 @@ public class MyStepdefinitions {
         try {
             Boolean pswrdlandingpage = driver.findElement(By.id("password-challenge")).isDisplayed();
             if(pswrdlandingpage.equals(TRUE)) {
-                System.out.println("Scenario3" + "\n" + "Yahoo enter password page displayed successfully:" + "\n" );
+                System.out.println("Scenario4" + "\n" + "Yahoo enter password page displayed successfully:" + "\n" );
             }else {
-                System.out.println("Scenario3" + "\n" + "Yahoo enter password page displayed unsuccessfully:" + "\n" );
+                System.out.println("Scenario4" + "\n" + "Yahoo enter password page displayed unsuccessfully:" + "\n" );
             }
             Thread.sleep(2000);
         } catch (InterruptedException e) {
