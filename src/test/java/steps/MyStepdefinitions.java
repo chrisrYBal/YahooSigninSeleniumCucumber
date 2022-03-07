@@ -32,7 +32,7 @@ public class MyStepdefinitions {
     @When("I click sign in button")
     public void iClickSignInButton() throws InterruptedException {
         driver.findElement(By.xpath("//a[@class='_yb_1ana4']")).click();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
     }
 
     @Then("the login page should be displayed")
@@ -70,7 +70,7 @@ public class MyStepdefinitions {
     @When("I click Next button")
     public void iClickNextButton() throws InterruptedException {
         driver.findElement(By.id("login-signin")).click();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
     }
 
     @Then("the username error message should be displayed")
