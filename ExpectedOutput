@@ -1,0 +1,61 @@
+
+Scenario: Go to Yahoo sign in page       
+ChromeDriver was started successfully.
+  Given I redirect to yahoo home page     # steps.MyStepdefinitions.iRedirectToYahooHomePage()
+  When I click sign in button             # steps.MyStepdefinitions.iClickSignInButton()
+
+Scenario1
+Yahoo sign in page displayed successfully:
+
+  Then the login page should be displayed # steps.MyStepdefinitions.theLoginPageShouldBeDisplayed()
+
+Scenario: Input non-existing username                 # src/test/resources/Google.feature:10
+ChromeDriver was started successfully.
+  Given I redirect to yahoo sign in page              # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input invalid username                       # steps.MyStepdefinitions.iInputInvalidUsername()
+  And I click Next button                             # steps.MyStepdefinitions.iClickNextButton()
+
+Scenario2
+User Expected and Actual Error Message Matched:
+Sorry, we don't recognize this email.
+  Then the username error message should be displayed # steps.MyStepdefinitions.theUsernameErrorMessageShouldBeDisplayed()
+
+Scenario: Input wrong password                        # src/test/resources/Google.feature:16
+ChromeDriver was started successfully.
+  Given I redirect to yahoo sign in page              # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input valid username                         # steps.MyStepdefinitions.iInputValidUsername()
+  And I click Next button                             # steps.MyStepdefinitions.iClickNextButton()
+
+Scenario3
+Yahoo enter password page displayed successfully:
+
+  Then the input password page should be displayed    # steps.MyStepdefinitions.theInputPasswordPageShouldBeDisplayed()
+  When I input wrong password                         # steps.MyStepdefinitions.iInputWrongPassword()
+  And I click password Next button                    # steps.MyStepdefinitions.iClickPasswordNextButton()
+
+Scenario3
+Password Expected and Actual Error Message Matched:
+Invalid password. Please try again
+  Then the password error message should be displayed # steps.MyStepdefinitions.thePasswordErrorMessageShouldBeDisplayed()
+
+Scenario: Happy Path                               # src/test/resources/Google.feature:25
+ChromeDriver was started successfully.
+  Given I redirect to yahoo sign in page           # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input valid username                      # steps.MyStepdefinitions.iInputValidUsername()
+  And I click Next button                          # steps.MyStepdefinitions.iClickNextButton()
+
+Scenario4
+Yahoo enter password page displayed successfully:
+
+  Then the input password page should be displayed # steps.MyStepdefinitions.theInputPasswordPageShouldBeDisplayed()
+  When I input correct password                    # steps.MyStepdefinitions.iInputCorrectPassword()
+  And I click password Next button                 # steps.MyStepdefinitions.iClickPasswordNextButton()
+
+Scenario4
+User signed in successfully
+RYAN CHRISTIAN
+  Then I navigated to my account                   # steps.MyStepdefinitions.iNavigatedToMyAccount()
+
+BUILD SUCCESSFUL in 1m 12s
+5 actionable tasks: 2 executed, 3 up-to-date
+6:37:43 PM: Execution finished ':test --tests "Runner"'.
