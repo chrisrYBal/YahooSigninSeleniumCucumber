@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class Sign in form test suite</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class Sign in form test suite</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/default-package.html">default-package</a> &gt; Sign in form test suite</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">4</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1m11.03s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">Go to Yahoo sign in page</td>
+<td class="success">15.919s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Happy Path</td>
+<td class="success">25.977s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Input non-existing username</td>
+<td class="success">11.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Input wrong password</td>
+<td class="success">18.121s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>
+Scenario: Go to Yahoo sign in page        # src/test/resources/Google.feature:5
+  Given I redirect to yahoo home page     # steps.MyStepdefinitions.iRedirectToYahooHomePage()
+  When I click sign in button             # steps.MyStepdefinitions.iClickSignInButton()
+Scenario1
+Yahoo sign in page displayed successfully:
+
+  Then the login page should be displayed # steps.MyStepdefinitions.theLoginPageShouldBeDisplayed()
+
+Scenario: Input non-existing username                 # src/test/resources/Google.feature:10
+  Given I redirect to yahoo sign in page              # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input invalid username                       # steps.MyStepdefinitions.iInputInvalidUsername()
+  And I click Next button                             # steps.MyStepdefinitions.iClickNextButton()
+Scenario2
+User Expected and Actual Error Message Matched:
+Sorry, we don't recognize this email.
+  Then the username error message should be displayed # steps.MyStepdefinitions.theUsernameErrorMessageShouldBeDisplayed()
+
+Scenario: Input wrong password                        # src/test/resources/Google.feature:16
+  Given I redirect to yahoo sign in page              # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input valid username                         # steps.MyStepdefinitions.iInputValidUsername()
+  And I click Next button                             # steps.MyStepdefinitions.iClickNextButton()
+Scenario3
+Yahoo enter password page displayed successfully:
+
+  Then the input password page should be displayed    # steps.MyStepdefinitions.theInputPasswordPageShouldBeDisplayed()
+  When I input wrong password                         # steps.MyStepdefinitions.iInputWrongPassword()
+  And I click password Next button                    # steps.MyStepdefinitions.iClickPasswordNextButton()
+Scenario3
+Password Expected and Actual Error Message Matched:
+Invalid password. Please try again
+  Then the password error message should be displayed # steps.MyStepdefinitions.thePasswordErrorMessageShouldBeDisplayed()
+
+Scenario: Happy Path                               # src/test/resources/Google.feature:25
+  Given I redirect to yahoo sign in page           # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input valid username                      # steps.MyStepdefinitions.iInputValidUsername()
+  And I click Next button                          # steps.MyStepdefinitions.iClickNextButton()
+Scenario3
+Yahoo enter password page displayed successfully:
+
+  Then the input password page should be displayed # steps.MyStepdefinitions.theInputPasswordPageShouldBeDisplayed()
+  When I input correct password                    # steps.MyStepdefinitions.iInputCorrectPassword()
+  And I click password Next button                 # steps.MyStepdefinitions.iClickPasswordNextButton()
+Scenario4
+User signed in successfully
+RYAN CHRISTIAN
+  Then I navigated to my account                   # steps.MyStepdefinitions.iNavigatedToMyAccount()
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 22885
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Mar 07, 2022 6:36:33 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 33958
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Mar 07, 2022 6:36:49 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 6382
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Mar 07, 2022 6:37:00 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 20041
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Mar 07, 2022 6:37:18 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.1</a> at 7 Mar 2022, 6:37:43 pm</p>
+</div>
+</div>
+</body>
+</html>

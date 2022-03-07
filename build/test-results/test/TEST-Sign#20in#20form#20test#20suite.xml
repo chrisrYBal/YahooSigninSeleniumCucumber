@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Sign in form test suite" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-03-07T10:36:32" hostname="DESKTOP-KML9RV5" time="71.03">
+  <properties/>
+  <testcase name="Go to Yahoo sign in page" classname="Sign in form test suite" time="15.919"/>
+  <testcase name="Input non-existing username" classname="Sign in form test suite" time="11.013"/>
+  <testcase name="Input wrong password" classname="Sign in form test suite" time="18.121"/>
+  <testcase name="Happy Path" classname="Sign in form test suite" time="25.977"/>
+  <system-out><![CDATA[
+Scenario: Go to Yahoo sign in page        # src/test/resources/Google.feature:5
+  Given I redirect to yahoo home page     # steps.MyStepdefinitions.iRedirectToYahooHomePage()
+  When I click sign in button             # steps.MyStepdefinitions.iClickSignInButton()
+Scenario1
+Yahoo sign in page displayed successfully:
+
+  Then the login page should be displayed # steps.MyStepdefinitions.theLoginPageShouldBeDisplayed()
+
+Scenario: Input non-existing username                 # src/test/resources/Google.feature:10
+  Given I redirect to yahoo sign in page              # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input invalid username                       # steps.MyStepdefinitions.iInputInvalidUsername()
+  And I click Next button                             # steps.MyStepdefinitions.iClickNextButton()
+Scenario2
+User Expected and Actual Error Message Matched:
+Sorry, we don't recognize this email.
+  Then the username error message should be displayed # steps.MyStepdefinitions.theUsernameErrorMessageShouldBeDisplayed()
+
+Scenario: Input wrong password                        # src/test/resources/Google.feature:16
+  Given I redirect to yahoo sign in page              # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input valid username                         # steps.MyStepdefinitions.iInputValidUsername()
+  And I click Next button                             # steps.MyStepdefinitions.iClickNextButton()
+Scenario3
+Yahoo enter password page displayed successfully:
+
+  Then the input password page should be displayed    # steps.MyStepdefinitions.theInputPasswordPageShouldBeDisplayed()
+  When I input wrong password                         # steps.MyStepdefinitions.iInputWrongPassword()
+  And I click password Next button                    # steps.MyStepdefinitions.iClickPasswordNextButton()
+Scenario3
+Password Expected and Actual Error Message Matched:
+Invalid password. Please try again
+  Then the password error message should be displayed # steps.MyStepdefinitions.thePasswordErrorMessageShouldBeDisplayed()
+
+Scenario: Happy Path                               # src/test/resources/Google.feature:25
+  Given I redirect to yahoo sign in page           # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
+  When I input valid username                      # steps.MyStepdefinitions.iInputValidUsername()
+  And I click Next button                          # steps.MyStepdefinitions.iClickNextButton()
+Scenario3
+Yahoo enter password page displayed successfully:
+
+  Then the input password page should be displayed # steps.MyStepdefinitions.theInputPasswordPageShouldBeDisplayed()
+  When I input correct password                    # steps.MyStepdefinitions.iInputCorrectPassword()
+  And I click password Next button                 # steps.MyStepdefinitions.iClickPasswordNextButton()
+Scenario4
+User signed in successfully
+RYAN CHRISTIAN
+  Then I navigated to my account                   # steps.MyStepdefinitions.iNavigatedToMyAccount()
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 22885
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Mar 07, 2022 6:36:33 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 33958
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Mar 07, 2022 6:36:49 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 6382
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Mar 07, 2022 6:37:00 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 20041
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Mar 07, 2022 6:37:18 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+]]></system-err>
+</testsuite>
