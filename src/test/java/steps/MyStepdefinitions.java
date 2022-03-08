@@ -31,7 +31,7 @@ public class MyStepdefinitions {
 
     @When("I click sign in button")
     public void iClickSignInButton() throws InterruptedException {
-        driver.findElement(By.xpath("//a[@class='_yb_1ana4']")).click();
+        driver.findElement(By.xpath("//a[contains(text(), 'Sign in')]")).click();
         Thread.sleep(4000);
     }
 
