@@ -19,8 +19,8 @@ public class MyStepdefinitions {
         this.driver = driver.get();
     }
 
-    @Given("I redirect to yahoo home page")
-    public void iRedirectToYahooHomePage() throws InterruptedException {
+    @Given("I am on the Home page")
+    public void iAmOnTheHomePage() throws InterruptedException {
         driver.manage();
         driver.get("https://yahoo.com/");
         driver.manage().window().maximize();
@@ -29,59 +29,20 @@ public class MyStepdefinitions {
         Thread.sleep(2000);
     }
 
-    @When("I click sign in button")
-    public void iClickSignInButton() throws InterruptedException {
+    @When("I click on {string} button on the Home page")
+    public void iClickOnButtonOnTheHomePage(String Signin) throws InterruptedException {
         driver.findElement(By.xpath("//a[contains(text(), 'Sign in')]")).click();
-        Thread.sleep(4000);
+        Thread.sleep(6000);
     }
 
-    @Then("the login page should be displayed")
-    public void theLoginPageShouldBeDisplayed() {
+    @Then("I should be on the Yahoo Sign in page")
+    public void iShouldBeOnTheYahooSignInPage() {
         try {
             Boolean landingpage = driver.findElement(By.id("login-landing")).isDisplayed();
             if(landingpage.equals(TRUE)) {
-                System.out.println("Scenario1" + "\n" + "Yahoo sign in page displayed successfully:" + "\n" );
+                System.out.println("Background: Yahoo sign in page displayed successfully:" + "\n" );
             }else {
-                System.out.println("Scenario1" + "\n" + "Yahoo sign in page displayed unsuccessfully:" + "\n" );
-            }
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Given("I redirect to yahoo sign in page")
-    public void iRedirectToYahooSignInPage() throws InterruptedException {
-        driver.manage();
-        driver.get("https://login.yahoo.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-        Thread.sleep(2000);
-    }
-
-
-    @When("I input invalid username")
-    public void iInputInvalidUsername() throws InterruptedException {
-        driver.findElement(By.id("login-username")).sendKeys("fortesting");
-        Thread.sleep(2000);
-    }
-
-    @When("I click Next button")
-    public void iClickNextButton() throws InterruptedException {
-        driver.findElement(By.id("login-signin")).click();
-        Thread.sleep(4000);
-    }
-
-    @Then("the username error message should be displayed")
-    public void theUsernameErrorMessageShouldBeDisplayed() {
-        try {
-            String EM = "Sorry, we don't recognize this email.";
-            String nonexistentEmailMessage = driver.findElement(By.id("username-error")).getText();
-            if(nonexistentEmailMessage.equals(EM)) {
-                System.out.println("Scenario2" + "\n" + "User Expected and Actual Error Message Matched:" + "\n" + nonexistentEmailMessage);
-            }else {
-                System.out.println("Scenario2" + "\n" + "User Expected and Actual Error Message Mismatched:" + nonexistentEmailMessage);
+                System.out.println("Background: Yahoo sign in page displayed unsuccessfully:" + "\n" );
             }
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -90,75 +51,73 @@ public class MyStepdefinitions {
     }
 
 
-    @When("I input valid username")
-    public void iInputValidUsername() throws InterruptedException {
-        driver.findElement(By.id("login-username")).sendKeys("chrisryanbaltazar");
+    @When("I enter invalid {string} data into the input box")
+    public void iEnterInvalidDataIntoTheInputBox(String invUser) throws InterruptedException {
+        driver.findElement(By.id("login-username")).sendKeys(invUser);
         Thread.sleep(2000);
     }
 
-    @Then("the input password page should be displayed")
-    public void theInputPasswordPageShouldBeDisplayed() {
-        try {
-            Boolean pswrdlandingpage = driver.findElement(By.id("password-challenge")).isDisplayed();
-            if(pswrdlandingpage.equals(TRUE)) {
-                System.out.println("Scenario4" + "\n" + "Yahoo enter password page displayed successfully:" + "\n" );
-            }else {
-                System.out.println("Scenario4" + "\n" + "Yahoo enter password page displayed unsuccessfully:" + "\n" );
-            }
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    @And("I click on {string} button to proceed")
+    public void iClickOnButtonToProceed(String next) throws InterruptedException {
+        driver.findElement(By.id(next)).click();
+        Thread.sleep(2000);
+    }
+
+    @Then("the {string} error message on the username Sign in page for input {string} should be visible")
+    public void theErrorMessageOnTheUsernameSignInPageForInputShouldBeVisible(String UserError, String text) {
+        Boolean visible = driver.findElement(By.id("username-error")).isDisplayed();
+        if(visible.equals(TRUE)){
+            System.out.println("'" + UserError + "'" + " error message is displayed for " + text + " input.");
+        }else{
+            System.out.println("'" + UserError + "'" + " error message is missing for " + text + " input.");
         }
 
     }
 
-    @When("I input wrong password")
-    public void iInputWrongPassword() throws InterruptedException {
-        driver.findElement(By.id("login-passwd")).sendKeys("Ros");
+    @When("I enter {string} into the username input box")
+    public void iEnterIntoTheUsernameInputBox(String valUser) throws InterruptedException {
+        driver.findElement(By.id("login-username")).sendKeys(valUser);
         Thread.sleep(2000);
     }
 
-    @And("I click password Next button")
-    public void iClickPasswordNextButton() throws InterruptedException {
-        driver.findElement(By.id("login-signin")).click();
+    @And("I enter {string} into the input box")
+    public void iEnterIntoTheInputBox(String invPass) throws InterruptedException {
+        driver.findElement(By.id("login-passwd")).sendKeys(invPass);
         Thread.sleep(2000);
+
     }
 
-    @Then("the password error message should be displayed")
-    public void thePasswordErrorMessageShouldBeDisplayed() {
-        try {
-            String EM = "Invalid password. Please try again";
-            String wrongPasswordMessage = driver.findElement(By.xpath("//p[@class='error-msg']")).getText();
-            if(wrongPasswordMessage.equals(EM)) {
-                System.out.println("Scenario3" + "\n" + "Password Expected and Actual Error Message Matched:" + "\n" + wrongPasswordMessage);
-            }else {
-                System.out.println("Scenario3" + "\n" + "Password Expected and Actual Error Message Mismatched:" + "\n" + wrongPasswordMessage);
-            }
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    @Then("the {string} error message on the password Sign in page for input {string} should be visible")
+    public void theErrorMessageOnThePasswordSignInPageForInputShouldBeVisible(String ErrorPass, String text) {
+        Boolean visible = driver.findElement(By.xpath("//p[@class='error-msg']")).isDisplayed();
+        if(visible.equals(TRUE)){
+            System.out.println("'" + ErrorPass + "'" + " error message is displayed for " + text + " input.");
+        }else{
+            System.out.println("'" + ErrorPass + "'" + " error message is missing for " + text + " input.");
         }
     }
 
-    @When("I input correct password")
-    public void iInputCorrectPassword() throws InterruptedException {
-        driver.findElement(By.id("login-passwd")).sendKeys("Rosoideae");
+    @When("I enter valid {string} data into the input box")
+    public void iEnterValidDataIntoTheInputBox(String valUser) throws InterruptedException {
+        driver.findElement(By.id("login-username")).sendKeys(valUser);
+        Thread.sleep(2000);
+
+    }
+
+    @And("I enter {string} into the password input box")
+    public void iEnterIntoThePasswordInputBox(String valPass) throws InterruptedException {
+        driver.findElement(By.id("login-passwd")).sendKeys(valPass);
         Thread.sleep(2000);
     }
 
-    @Then("I navigated to my account")
-    public void iNavigatedToMyAccount() {
-        try {
-            String eName = "RYAN CHRISTIAN";
-            String aName = driver.findElement(By.id("ybarAccountMenuOpener")).getText();
-            if(aName.equals(eName)) {
-                System.out.println("Scenario4" + "\n" + "User signed in successfully" + "\n" + aName);
-            }else {
-                System.out.println("Scenario4" + "\n" + "User unable to sign in" + "\n" + aName);
-            }
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    @Then("I should be able to logged in")
+    public void iShouldBeAbleToLoggedIn() throws InterruptedException {
+        Boolean visible = driver.findElement(By.xpath("//span[contains(text(), 'RYAN CHRISTIAN')]")).isDisplayed();
+        if(visible.equals(TRUE)){
+            System.out.println("Yahoo account logged in successfully");
+        }else{
+            System.out.println("Yahoo account unable to logged in");
         }
+        Thread.sleep(2000);
     }
 }
