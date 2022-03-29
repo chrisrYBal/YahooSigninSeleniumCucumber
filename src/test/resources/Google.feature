@@ -1,36 +1,42 @@
-Feature: Sign in form test suite
-  Test Sign in module for Yahoo
+Feature: Yahoo Sign in page should have verification on username and password
 
+  Background: Redirect to Yahoo Sign in page from Yahoo Home page
+    Given I am on the Home page
+    When I click on "Sign in" button on the Home page
+    Then I should be on the Yahoo Sign in page
 
-  Scenario: Go to Yahoo sign in page
-    Given I redirect to yahoo home page
-    When I click sign in button
-    Then the login page should be displayed
+  Scenario Outline: Username should display an error when entered with invalid data
+    When I enter invalid "<username>" data into the input box
+    And I click on "login-signin" button to proceed
+    Then the "<error>" error message on the username Sign in page for input "<username>" should be visible
+    Examples:
+      | username   | error                                        |
+      | fortesting | Sorry, we don't recognize this email.        |
+      | 0936055985 | Sorry, we don't recognize this phone number. |
+      |            | Sorry, we don't recognize this email.        |
 
-  Scenario: Input non-existing username
-    Given I redirect to yahoo sign in page
-    When I input invalid username
-    And I click Next button
-    Then the username error message should be displayed
+  Scenario Outline: Password should display an error when entered with invalid data
 
-  Scenario: Input wrong password
-    Given I redirect to yahoo sign in page
-    When I input valid username
-    And I click Next button
-    Then the input password page should be displayed
-    When I input wrong password
-    And I click password Next button
-    Then the password error message should be displayed
+    When I enter "chrisryanbaltazar@yahoo.com" into the username input box
+    And I click on "login-signin" button to proceed
+    And I enter "<password>" into the input box
+    And I click on "login-signin" button to proceed
+    Then the "<error>" error message on the password Sign in page for input "<password>" should be visible
+    Examples:
+      | password | error                              |
+      | Rosoi    | Invalid password. Please try again |
+      |          | Please provide password.           |
 
-  Scenario: Happy Path
-    Given I redirect to yahoo sign in page
-    When I input valid username
-    And I click Next button
-    Then the input password page should be displayed
-    When I input correct password
-    And I click password Next button
-    Then I navigated to my account
-
+  Scenario Outline: Both username and password should able to proceed when entered with valid data
+    When I enter valid "<username>" data into the input box
+    And I click on "login-signin" button to proceed
+    And I enter "Rosoideae" into the password input box
+    And I click on "login-signin" button to proceed
+    Then I should be able to logged in
+    Examples:
+      | username                    |
+      | chrisryanbaltazar@yahoo.com |
+      | chrisryanbaltazar           |
 
 
 
