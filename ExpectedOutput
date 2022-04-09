@@ -1,61 +1,95 @@
+Scenario Outline: Username should display an error when entered with invalid data                                                      # src/test/resources/feature.feature:14
 
-Scenario: Go to Yahoo sign in page       
-ChromeDriver was started successfully.
-  Given I redirect to yahoo home page     # steps.MyStepdefinitions.iRedirectToYahooHomePage()
-  When I click sign in button             # steps.MyStepdefinitions.iClickSignInButton()
+  Given I am on the Home page                                                                                                          # steps.MyStepdefinitions.iAmOnTheHomePage()
+  When I click on "Sign in" button on the Home page                                                                                    # steps.MyStepdefinitions.iClickOnButtonOnTheHomePage(java.lang.String)
+Background: Yahoo sign in page displayed successfully:
 
-Scenario1
-Yahoo sign in page displayed successfully:
+  Then I should be on the Yahoo Sign in page                                                                                           # steps.MyStepdefinitions.iShouldBeOnTheYahooSignInPage()
+  When I enter invalid "fortesting" data into the input box                                                                            # steps.MyStepdefinitions.iEnterInvalidDataIntoTheInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                                                      # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+'Sorry, we don't recognize this email.' error message is displayed for fortesting input.
+  Then the "Sorry, we don't recognize this email." error message on the username Sign in page for input "fortesting" should be visible # steps.MyStepdefinitions.theErrorMessageOnTheUsernameSignInPageForInputShouldBeVisible(java.lang.String,java.lang.String)
 
-  Then the login page should be displayed # steps.MyStepdefinitions.theLoginPageShouldBeDisplayed()
+Scenario Outline: Username should display an error when entered with invalid data                                                             # src/test/resources/feature.feature:15
 
-Scenario: Input non-existing username                 # src/test/resources/Google.feature:10
-ChromeDriver was started successfully.
-  Given I redirect to yahoo sign in page              # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
-  When I input invalid username                       # steps.MyStepdefinitions.iInputInvalidUsername()
-  And I click Next button                             # steps.MyStepdefinitions.iClickNextButton()
+  Given I am on the Home page                                                                                                                 # steps.MyStepdefinitions.iAmOnTheHomePage()
+  When I click on "Sign in" button on the Home page                                                                                           # steps.MyStepdefinitions.iClickOnButtonOnTheHomePage(java.lang.String)
+Background: Yahoo sign in page displayed successfully:
 
-Scenario2
-User Expected and Actual Error Message Matched:
-Sorry, we don't recognize this email.
-  Then the username error message should be displayed # steps.MyStepdefinitions.theUsernameErrorMessageShouldBeDisplayed()
+  Then I should be on the Yahoo Sign in page                                                                                                  # steps.MyStepdefinitions.iShouldBeOnTheYahooSignInPage()
+  When I enter invalid "0936055985" data into the input box                                                                                   # steps.MyStepdefinitions.iEnterInvalidDataIntoTheInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                                                             # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+'Sorry, we don't recognize this phone number.' error message is displayed for 0936055985 input.
+  Then the "Sorry, we don't recognize this phone number." error message on the username Sign in page for input "0936055985" should be visible # steps.MyStepdefinitions.theErrorMessageOnTheUsernameSignInPageForInputShouldBeVisible(java.lang.String,java.lang.String)
 
-Scenario: Input wrong password                        # src/test/resources/Google.feature:16
-ChromeDriver was started successfully.
-  Given I redirect to yahoo sign in page              # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
-  When I input valid username                         # steps.MyStepdefinitions.iInputValidUsername()
-  And I click Next button                             # steps.MyStepdefinitions.iClickNextButton()
+Scenario Outline: Username should display an error when entered with invalid data                                            # src/test/resources/feature.feature:16
 
-Scenario3
-Yahoo enter password page displayed successfully:
+  Given I am on the Home page                                                                                                # steps.MyStepdefinitions.iAmOnTheHomePage()
+  When I click on "Sign in" button on the Home page                                                                          # steps.MyStepdefinitions.iClickOnButtonOnTheHomePage(java.lang.String)
+Background: Yahoo sign in page displayed successfully:
 
-  Then the input password page should be displayed    # steps.MyStepdefinitions.theInputPasswordPageShouldBeDisplayed()
-  When I input wrong password                         # steps.MyStepdefinitions.iInputWrongPassword()
-  And I click password Next button                    # steps.MyStepdefinitions.iClickPasswordNextButton()
+  Then I should be on the Yahoo Sign in page                                                                                 # steps.MyStepdefinitions.iShouldBeOnTheYahooSignInPage()
+  When I enter invalid "" data into the input box                                                                            # steps.MyStepdefinitions.iEnterInvalidDataIntoTheInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                                            # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+'Sorry, we don't recognize this email.' error message is displayed for  input.
+  Then the "Sorry, we don't recognize this email." error message on the username Sign in page for input "" should be visible # steps.MyStepdefinitions.theErrorMessageOnTheUsernameSignInPageForInputShouldBeVisible(java.lang.String,java.lang.String)
 
-Scenario3
-Password Expected and Actual Error Message Matched:
-Invalid password. Please try again
-  Then the password error message should be displayed # steps.MyStepdefinitions.thePasswordErrorMessageShouldBeDisplayed()
+Scenario Outline: Password should display an error when entered with invalid data                                              # src/test/resources/feature.feature:27
 
-Scenario: Happy Path                               # src/test/resources/Google.feature:25
-ChromeDriver was started successfully.
-  Given I redirect to yahoo sign in page           # steps.MyStepdefinitions.iRedirectToYahooSignInPage()
-  When I input valid username                      # steps.MyStepdefinitions.iInputValidUsername()
-  And I click Next button                          # steps.MyStepdefinitions.iClickNextButton()
+  Given I am on the Home page                                                                                                  # steps.MyStepdefinitions.iAmOnTheHomePage()
+  When I click on "Sign in" button on the Home page                                                                            # steps.MyStepdefinitions.iClickOnButtonOnTheHomePage(java.lang.String)
+Background: Yahoo sign in page displayed successfully:
 
-Scenario4
-Yahoo enter password page displayed successfully:
+  Then I should be on the Yahoo Sign in page                                                                                   # steps.MyStepdefinitions.iShouldBeOnTheYahooSignInPage()
+  When I enter "chrisryanbaltazar@yahoo.com" into the username input box                                                       # steps.MyStepdefinitions.iEnterIntoTheUsernameInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                                              # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+  And I enter "Rosoi" into the input box                                                                                       # steps.MyStepdefinitions.iEnterIntoTheInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                                              # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+'Invalid password. Please try again' error message is displayed for Rosoi input.
+  Then the "Invalid password. Please try again" error message on the password Sign in page for input "Rosoi" should be visible # steps.MyStepdefinitions.theErrorMessageOnThePasswordSignInPageForInputShouldBeVisible(java.lang.String,java.lang.String)
 
-  Then the input password page should be displayed # steps.MyStepdefinitions.theInputPasswordPageShouldBeDisplayed()
-  When I input correct password                    # steps.MyStepdefinitions.iInputCorrectPassword()
-  And I click password Next button                 # steps.MyStepdefinitions.iClickPasswordNextButton()
+Scenario Outline: Password should display an error when entered with invalid data                               # src/test/resources/feature.feature:28
 
-Scenario4
-User signed in successfully
-RYAN CHRISTIAN
-  Then I navigated to my account                   # steps.MyStepdefinitions.iNavigatedToMyAccount()
+  Given I am on the Home page                                                                                   # steps.MyStepdefinitions.iAmOnTheHomePage()
+  When I click on "Sign in" button on the Home page                                                             # steps.MyStepdefinitions.iClickOnButtonOnTheHomePage(java.lang.String)
+Background: Yahoo sign in page displayed successfully:
 
-BUILD SUCCESSFUL in 1m 12s
+  Then I should be on the Yahoo Sign in page                                                                    # steps.MyStepdefinitions.iShouldBeOnTheYahooSignInPage()
+  When I enter "chrisryanbaltazar@yahoo.com" into the username input box                                        # steps.MyStepdefinitions.iEnterIntoTheUsernameInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                               # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+  And I enter "" into the input box                                                                             # steps.MyStepdefinitions.iEnterIntoTheInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                               # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+'Please provide password.' error message is displayed for  input.
+  Then the "Please provide password." error message on the password Sign in page for input "" should be visible # steps.MyStepdefinitions.theErrorMessageOnThePasswordSignInPageForInputShouldBeVisible(java.lang.String,java.lang.String)
+
+Scenario Outline: Both username and password should able to proceed when entered with valid data # src/test/resources/feature.feature:38
+
+  Given I am on the Home page                                                                    # steps.MyStepdefinitions.iAmOnTheHomePage()
+  When I click on "Sign in" button on the Home page                                              # steps.MyStepdefinitions.iClickOnButtonOnTheHomePage(java.lang.String)
+Background: Yahoo sign in page displayed successfully:
+
+  Then I should be on the Yahoo Sign in page                                                     # steps.MyStepdefinitions.iShouldBeOnTheYahooSignInPage()
+  When I enter valid "chrisryanbaltazar@yahoo.com" data into the input box                       # steps.MyStepdefinitions.iEnterValidDataIntoTheInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+  And I enter "Rosoideae" into the password input box                                            # steps.MyStepdefinitions.iEnterIntoThePasswordInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+Yahoo account logged in successfully
+  Then I should be able to logged in                                                             # steps.MyStepdefinitions.iShouldBeAbleToLoggedIn()
+
+Scenario Outline: Both username and password should able to proceed when entered with valid data # src/test/resources/feature.feature:39
+
+  Given I am on the Home page                                                                    # steps.MyStepdefinitions.iAmOnTheHomePage()
+  When I click on "Sign in" button on the Home page                                              # steps.MyStepdefinitions.iClickOnButtonOnTheHomePage(java.lang.String)
+Background: Yahoo sign in page displayed successfully:
+
+  Then I should be on the Yahoo Sign in page                                                     # steps.MyStepdefinitions.iShouldBeOnTheYahooSignInPage()
+  When I enter valid "chrisryanbaltazar" data into the input box                                 # steps.MyStepdefinitions.iEnterValidDataIntoTheInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+  And I enter "Rosoideae" into the password input box                                            # steps.MyStepdefinitions.iEnterIntoThePasswordInputBox(java.lang.String)
+  And I click on "login-signin" button to proceed                                                # steps.MyStepdefinitions.iClickOnButtonToProceed(java.lang.String)
+Yahoo account logged in successfully
+  Then I should be able to logged in                                                             # steps.MyStepdefinitions.iShouldBeAbleToLoggedIn()
+
+BUILD SUCCESSFUL in 2m 22s
 5 actionable tasks: 2 executed, 3 up-to-date
-6:37:43 PM: Execution finished ':test --tests "Runner"'.
+5:25:15 PM: Execution finished ':test --tests "Runner"'.
