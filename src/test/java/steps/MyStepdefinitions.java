@@ -7,6 +7,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,16 +33,19 @@ public class MyStepdefinitions {
     }
 
     @When("I click on {string} button on the Home page")
-    public void iClickOnButtonOnTheHomePage(String Signin) throws InterruptedException {
-        driver.findElement(By.xpath("//a[contains(text(), 'Sign in')]")).click();
-        Thread.sleep(6000);
+    public void iClickOnButtonOnTheHomePage(String Signin) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'Sign in')]")));
+        element.click();
     }
 
     @Then("I should be on the Yahoo Sign in page")
     public void iShouldBeOnTheYahooSignInPage() {
         try {
-            Boolean landingpage = driver.findElement(By.id("login-landing")).isDisplayed();
-            if(landingpage.equals(TRUE)) {
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-landing")));
+            Boolean landingpagestatus = element.isDisplayed();
+            if(landingpagestatus.equals(TRUE)) {
                 System.out.println("Background: Yahoo sign in page displayed successfully:" + "\n" );
             }else {
                 System.out.println("Background: Yahoo sign in page displayed unsuccessfully:" + "\n" );
